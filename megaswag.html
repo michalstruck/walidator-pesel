@@ -60,6 +60,10 @@
             }
         ]
 
+        monthSingleDigit= {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07",
+            "8": "08", "9": "09"}
+        monthTwoDigit = {"0": "10", "1": "11", "2": "12"}
+
         const checkPesel = (pesel) => {
             //zamiana inputu na tablice typu Int
             let peselArr = pesel.split('')
@@ -72,13 +76,70 @@
             //sprawdzenie ostatniego indexu tablicy
             checkDigit = 10 - ( sum % 10 )
 
+
             //zwraca komunikat czy pesel jest poprawny
             if (peselArr.length !== 11) return results[0];
             if (checkDigit === peselArr[10]) return results[2];
 
+
+
             return results[1]
         }
-        
+
+        function getDate(pesel) {
+
+            //zamiana inputu na tablice typu Int
+            let peselArr = pesel.split('')
+            peselArr = peselArr.map((el) => parseInt(el))
+
+            //1800-1899
+            if(pesel[2] == 8 || pesel[2] == 9){
+                if(pesel[2] % 2 == 0) {
+                    return `18${pesel[0]}${pesel[1]}-${monthSingleDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }else{
+                    return `18${pesel[0]}${pesel[1]}-${monthTwoDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }
+            }
+
+            //1900-1999
+            if(pesel[2] == 0 || pesel[2] == 1){
+                if(pesel[2] % 2 == 0) {
+                    return `19${pesel[0]}${pesel[1]}-${monthSingleDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }else{
+                    return `19${pesel[0]}${pesel[1]}-${monthTwoDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }
+            }
+
+            //2000-2099
+            if(pesel[2] == 2 || pesel[2] == 3){
+                if(pesel[2] % 2 == 0) {
+                    return `20${pesel[0]}${pesel[1]}-${monthSingleDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }else{
+                    return `20${pesel[0]}${pesel[1]}-${monthTwoDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }
+            }
+
+            //2100-2199
+            if(pesel[2] == 4 || pesel[2] == 5){
+                if(pesel[2] % 2 == 0) {
+                    return `21${pesel[0]}${pesel[1]}-${monthSingleDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }else{
+                    return `21${pesel[0]}${pesel[1]}-${monthTwoDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }
+            }
+
+            //2200-2299
+            if(pesel[2] == 6 || pesel[2] == 7){
+                if(pesel[2] % 2 == 0) {
+                    return `22${pesel[0]}${pesel[1]}-${monthSingleDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }else{
+                    return `22${pesel[0]}${pesel[1]}-${monthTwoDigit[pesel[3]]}-${pesel[4]}${pesel[5]}`
+                }
+            }
+
+
+        }
+
         //tego nie tykalem ale to do przycisku sie odnosi
         const button = document.querySelector('#button')
         const result = document.querySelector('#result')
@@ -89,6 +150,7 @@
             const checkStatus = checkPesel(pesel)
             result.classList.remove('error', 'success')
             result.innerHTML = checkStatus.message
+            console.log(getDate(pesel))
 
             if (checkStatus.status === false) {
                 result.classList.add('error')
