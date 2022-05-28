@@ -36,12 +36,8 @@
     <span id="result" class="result"></span>
     <script>
 
-        var dateOfBirth
         let sum = 0
         let checkDigit = 0
-
-        //how to check if pesel number is correct
-        //1*a + 3*b + 7*c + 9*d + 1*e + 3*f + 7*g + 9*h + 1*i + 3*j || last == result
         const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
 
         const results = [
@@ -59,26 +55,30 @@
             }
         ]
 
+        year = {"0": "19", "1": "19", "2": "20", "3": "20", "4": "21", "5": "21", "6": "22", "7": "22",
+            "8": "18", "9": "18"}
         monthSingleDigit= {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07",
             "8": "08", "9": "09"}
         monthTwoDigit = {"0": "10", "1": "11", "2": "12"}
-        year = {"0": "19", "1": "19", "2": "20", "3": "20", "4": "21", "5": "21", "6": "22", "7": "22",
-            "8": "18", "9": "18"}
-
 
         const checkPesel = (pesel) => {
+
             //zamiana inputu na tablice typu Int
             let peselArr = pesel.split('')
             peselArr = peselArr.map((el) => parseInt(el))
-            //tu podstawia do wzorku wyżej
+
+            //tu podstawia do wzorku 1*a + 3*b + 7*c + 9*d + 1*e + 3*f + 7*g + 9*h + 1*i + 3*j || last == result
             peselArr.forEach((element, index, peselArr) => {
                 if (index === peselArr.length - 1) return
                 sum += parseInt(element) * parseInt(weights[index])
             })
+
             //sprawdzenie ostatniego indexu tablicy
             checkDigit = 10 - ( sum % 10 )
 
             //zwraca komunikat czy pesel jest poprawny
+            //TODO naprawić błąd - po drugim wpisaniu peselu komunikat "niepoprawny pesel" niezaleznie od tego czy pesel jest poprawny czy nie
+            //TODO zabezpieczenie przed wpisaniem liczby ujemnej
             if (peselArr.length !== 11) return results[0];
             if (checkDigit === peselArr[10]) return results[2];
 
@@ -87,8 +87,12 @@
 
         function getDate(pesel) {
             var monthLenght
-            pesel[2] % 2 == 0 ? monthLenght = monthSingleDigit[pesel[3]] : monthLenght = monthTwoDigit[pesel[3]]
+            pesel[2] % 2 === 0 ? monthLenght = monthSingleDigit[pesel[3]] : monthLenght = monthTwoDigit[pesel[3]]
             return `${year[pesel[2]]}${pesel[0]}${pesel[1]}-${monthLenght}-${pesel[4]}${pesel[5]}`
+        }
+
+        function getGender(pesel){
+           return pesel[9] % 2 === 0 ? "kobieta" : "mężczyzna"
         }
 
         //tego nie tykalem ale to do przycisku sie odnosi
@@ -101,7 +105,10 @@
             const checkStatus = checkPesel(pesel)
             result.classList.remove('error', 'success')
             result.innerHTML = checkStatus.message
+
+            //print w konsoli danych
             console.log(getDate(pesel))
+            console.log(getGender(pesel))
 
             if (checkStatus.status === false) {
                 result.classList.add('error')
