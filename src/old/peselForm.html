@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dane osobowe</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<form onsubmit="return false">
+
+    <label for="pesel" class="label">Pesel</label>
+    <input id="pesel" type="number" class="input" min="0" required="required">
+    <button id="button" class="button">Sprawdź</button>
+    <button onClick="window.location.reload();">Refresh Page</button>
+    <span id="result" class="result"></span>
+    <script src="peselValidator.js"></script>
+
+</form>
+
+<p id="gender"></p>
+<p id="birthDate"></p>
+
+</body>
+</html>
