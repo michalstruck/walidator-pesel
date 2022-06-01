@@ -24,15 +24,15 @@ const result = [
 const Wrapper = ({ children }: { children: ReactNode }) => {
   return (
     <span
-      className="p-2 text-center absolute z-10
+      className="p-1 text-center absolute z-10
         bg-slate-500
-        text-xs font-semibold rounded-lg opacity-80 mb-8
+        text-xs font-semibold rounded-lg opacity-80 mb-24 ml-80
       "
       role="alert"
     >
       {children}
       <div className="relative">
-        <span className="absolute float-left opacity-80 text-slate-500 cursor-default">
+        <span className="absolute -translate-x-16 -translate-y-1 text-base opacity-80 text-slate-500 cursor-default">
           ▼
         </span>
       </div>
@@ -63,19 +63,19 @@ const Main = () => {
     if (!errors.pesel) return false;
 
     if (errors.pesel.type === "required")
-      return <Wrapper>This field is required</Wrapper>;
+      return <Wrapper>This field is required, my dear</Wrapper>;
     if (errors.pesel.type === "minLength")
-      return <Wrapper>This PESEL is too short</Wrapper>;
+      return <Wrapper>This PESEL is too short I think</Wrapper>;
     if (errors.pesel.type === "maxLength")
-      return <Wrapper>This PESEL is too long</Wrapper>;
+      return <Wrapper>This PESEL is too long I do declare</Wrapper>;
     if (errors.pesel.type === "pattern")
       return <Wrapper>This PESEL doesn't match the correct pattern</Wrapper>;
   };
 
   return (
-    <div className="bg-stone-200 flex relative items-center justify-center h-screen w-screen text-2xl">
+    <div className="bg-stone-200 relative grid place-items-center h-screen w-screen text-2xl">
       <form
-        className="bg-purple-400 grid place-items-center w-[20%] h-[40%] rounded-lg"
+        className="mt-60 bg-purple-400 grid place-items-center w-[20%] h-[40%] rounded-lg"
         onSubmit={handleSubmit((value) => Submit(value.pesel))}
       >
         <label className="grid place-items-center text-neutral-800 drop-shadow-xl text-center ">
@@ -91,8 +91,8 @@ const Main = () => {
             className="text-center mt-1 -mb-5 text-black block w-5/6 shadow-xl 
             rounded-md focus:outline-none focus:ring-purple-500 focus:ring-2 "
           />
-          {errors.pesel && validationMessage()}
         </label>
+        {errors.pesel && validationMessage()}
         <button
           type="submit"
           className="w-1/2 flex justify-center py-2 px-4 mb-5
