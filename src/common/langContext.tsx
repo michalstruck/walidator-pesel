@@ -1,20 +1,25 @@
 import { createContext } from "react";
 
-export type langs = "en-US" | "pl-PL" | "fr-FR" | "es-ES";
-
-export const languages = {
-  polish: "pl-PL",
-  english: "en-US",
-  french: "fr-FR",
-  spanish: "es-ES",
-};
+export type langs = "enUS" | "plPL" | "frFR" | "esES";
 
 const langContext = createContext<{
   language: string;
   changeLanguage: (newLang: langs) => void;
+  currentTranslations: {
+    Language: string;
+    Check: string;
+    Sex: string;
+    DOB: string;
+  };
 }>({
-  language: languages.polish,
+  language: "enUS",
   changeLanguage: () => {},
+  currentTranslations: {
+    Language: "Język",
+    Check: "Sprawdź",
+    Sex: "Płeć",
+    DOB: "Data urodzenia:",
+  },
 });
 
 export default langContext;

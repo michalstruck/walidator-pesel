@@ -1,20 +1,26 @@
 {
-  "pl-PL": {
-    "Język": "Język",
-    "Sprawdź": "Sprawdź",
-    "Płeć": "Płeć",
-    "Data urodzenia": "Data urodzenia"
+  "plPL": {
+    "Language": "Język",
+    "Check": "Sprawdź",
+    "Sex": "Płeć",
+    "DOB": "Data urodzenia:"
   },
-  "en-US": {
-    "Język": "Language",
-    "Sprawdź": "Check",
-    "Płeć": "Sex",
-    "Data urodzenia": "Date of birth"
+  "enUS": {
+    "Language": "Language",
+    "Check": "Check",
+    "Sex": "Sex",
+    "DOB": "Date of birth:"
   },
-  "es-ES": {
-    "Język": "Lengua",
-    "Sprawdź": "Controlar",
-    "Płeć": "Sexo",
-    "Data urodzenia": "Fecha de nacimiento"
+  "esES": {
+    "Language": "Lengua",
+    "Check": "Controlar",
+    "Sex": "Sexo",
+    "DOB": "Fecha de nacimiento:"
+  },
+  "frFR": {
+    "Language": "Language",
+    "Check": "Sprawdź",
+    "Sex": "Data urodzenia:",
+    "DOB": "Płeć"
   }
 }

@@ -1,16 +1,34 @@
 import { useState } from "react";
-import langContext, { languages, langs } from "./common/langContext";
+import langContext, { langs } from "./common/langContext";
 import Main from "./components/Main";
-
-const { polish } = languages;
+import translations from "./common/lang.json";
 
 const App = () => {
   const changeLanguage = (newLang: langs) => {
-    setLang(() => ({ language: newLang, changeLanguage }));
+    setLang((prevState) => ({
+      currentTranslations: translations[`${newLang}`],
+      language: newLang,
+      changeLanguage,
+    }));
   };
+
+  const currentTranslations = {
+    Language: "Language",
+    Check: "Check",
+    Sex: "Sex",
+    DOB: "Date of birth",
+  };
+
+  // const changeCurrentTranslations = (newLang: langs) =>
+  //   setLang((prevState) => ({
+  //     ...prevState,
+  //     currentTranslations: translations[`${newLang}`],
+  //   }));
+
   const [lang, setLang] = useState({
-    language: polish,
+    language: "enUS",
     changeLanguage,
+    currentTranslations,
   });
 
   return (

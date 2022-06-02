@@ -1,12 +1,12 @@
 import Results from "./Results";
 import { useForm } from "react-hook-form";
 import usePesel from "../common/usePesel";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import langContext, { langs } from "../common/langContext";
 
 interface Form {
   pesel: string;
-  language: string;
+  language: langs;
 }
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
@@ -35,6 +35,11 @@ const Main = () => {
     formState: { errors },
   } = useForm<Form>();
 
+  const { language, changeLanguage, currentTranslations } =
+    useContext(langContext);
+
+  const { Check, Language } = currentTranslations;
+
   const { checkPesel, getDate, getGender, current, setCurrent } = usePesel();
 
   const Submit = (pesel: string) => {
@@ -61,63 +66,59 @@ const Main = () => {
   };
 
   return (
-    <langContext.Consumer>
-      {({ language, changeLanguage }) => (
-        <div className="bg-stone-200 relative grid place-items-center h-screen w-screen text-2xl">
-          <label className="flex justify-start items-center text-neutral-800 drop-shadow-xl text-center text-xs">
-            Język
-            <select
-              className="ml-1 text-center text-black block w-5/6 shadow-xl 
+    <div className="bg-stone-200 relative grid place-items-center h-screen w-screen text-2xl">
+      <label className="flex justify-start items-center text-neutral-800 drop-shadow-xl text-center text-xs">
+        {Language}
+        <select
+          className="ml-1 text-center text-black block w-5/6 shadow-xl 
           rounded-md focus:outline-none focus:ring-purple-500 focus:ring-2"
-              onChange={(e) => {
-                changeLanguage(e.target.value as langs);
-              }}
-              value={language}
-            >
-              <option value="pl-PL">Polski</option>
-              <option value="en-US">English</option>
-              <option value="es-ES">Español</option>
-              <option value="fr-FR">Français</option>
-            </select>
-          </label>
+          onChange={(e) => {
+            changeLanguage(e.target.value as langs);
+          }}
+          value={language}
+        >
+          <option value="plPL">Polski</option>
+          <option value="enUS">English</option>
+          <option value="esES">Español</option>
+          <option value="frFR">Français</option>
+        </select>
+      </label>
 
-          <form
-            className=" bg-purple-400 flex flex-wrap justify-center items-center w-96 h-48 rounded-lg"
-            onSubmit={handleSubmit((value) => Submit(value.pesel))}
-          >
-            <label className="grid place-items-center text-neutral-800 drop-shadow-xl text-center ">
-              Pesel
-              <input
-                {...register("pesel", {
-                  required: "To pole jest wymagane",
-                  pattern: /^[0-9]{11}/,
-                  minLength: 11,
-                  maxLength: 11,
-                })}
-                type="text"
-                className="text-center mt-1 text-black block w-5/6 shadow-xl 
+      <form
+        className=" bg-purple-400 flex flex-wrap justify-center items-center w-96 h-48 rounded-lg"
+        onSubmit={handleSubmit((value) => Submit(value.pesel))}
+      >
+        <label className="grid place-items-center text-neutral-800 drop-shadow-xl text-center ">
+          Pesel
+          <input
+            {...register("pesel", {
+              required: "To pole jest wymagane",
+              pattern: /^[0-9]{11}/,
+              minLength: 11,
+              maxLength: 11,
+            })}
+            type="text"
+            className="text-center mt-1 text-black block w-5/6 shadow-xl 
             rounded-md focus:outline-none focus:ring-purple-500 focus:ring-2 "
-              />
-            </label>
-            {errors.pesel && validationMessage()}
-            <button
-              type="submit"
-              className="w-1/2 flex justify-center py-2 px-4
+          />
+        </label>
+        {errors.pesel && validationMessage()}
+        <button
+          type="submit"
+          className="w-1/2 flex justify-center py-2 px-4
           border border-transparent rounded-md
          text-white bg-fuchsia-600 hover:bg-fuchsia-700 
           active:translate-y-1 focus:ring-fuchsia-500"
-            >
-              Sprawdź
-            </button>
-          </form>
-          <Results
-            sex={current.sex}
-            DOB={current.DOB}
-            correct={current.correct}
-          />
-        </div>
-      )}
-    </langContext.Consumer>
+        >
+          {Check}
+        </button>
+      </form>
+      <Results
+        sexValue={current.sex}
+        DOBValue={current.DOB}
+        correct={current.correct}
+      />
+    </div>
   );
 };
 
