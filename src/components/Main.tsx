@@ -71,16 +71,16 @@ const Main = () => {
           rounded-md focus:outline-none focus:ring-purple-500 focus:ring-2"
               onChange={(e) => {
                 changeLanguage(e.target.value as langs);
-                console.log(language);
               }}
-              defaultValue="en-US"
+              value={language}
             >
+              <option value="pl-PL">Polski</option>
               <option value="en-US">English</option>
-              <option value="pl-PL">Polish</option>
-              <option value="es-ES">Spanish</option>
-              <option value="fr-FR">French</option>
+              <option value="es-ES">Español</option>
+              <option value="fr-FR">Français</option>
             </select>
           </label>
+
           <form
             className=" bg-purple-400 flex flex-wrap justify-center items-center w-96 h-48 rounded-lg"
             onSubmit={handleSubmit((value) => Submit(value.pesel))}

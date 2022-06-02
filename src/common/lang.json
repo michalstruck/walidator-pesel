@@ -1,0 +1,20 @@
+{
+  "pl-PL": {
+    "Język": "Język",
+    "Sprawdź": "Sprawdź",
+    "Płeć": "Płeć",
+    "Data urodzenia": "Data urodzenia"
+  },
+  "en-US": {
+    "Język": "Language",
+    "Sprawdź": "Check",
+    "Płeć": "Sex",
+    "Data urodzenia": "Date of birth"
+  },
+  "es-ES": {
+    "Język": "Lengua",
+    "Sprawdź": "Controlar",
+    "Płeć": "Sexo",
+    "Data urodzenia": "Fecha de nacimiento"
+  }
+}
