@@ -3,24 +3,48 @@
     "Language": "Język",
     "Check": "Sprawdź",
     "Sex": "Płeć",
-    "DOB": "Data urodzenia:"
+    "DOB": "Data urodzenia",
+    "FieldRequired": "To pole jest wymagane",
+    "PeselTooShort": "Podany pesel jest za krótki",
+    "PeselTooLong": "Podany pesel jest za długi",
+    "OnlyNumbers": "Pesel może składać się tylko z cyfr",
+    "Man": "Mężczyzna",
+    "Woman": "Kobieta"
   },
   "enUS": {
     "Language": "Language",
     "Check": "Check",
     "Sex": "Sex",
-    "DOB": "Date of birth:"
+    "DOB": "Date of birth",
+    "FieldRequired": "This field is required, my dear",
+    "PeselTooShort": "This PESEL is too short I think",
+    "PeselTooLong": "This PESEL is too long I do declare",
+    "OnlyNumbers": "A pesel can contain only numbers hun",
+    "Man": "Man",
+    "Woman": "Woman"
   },
   "esES": {
     "Language": "Lengua",
     "Check": "Controlar",
     "Sex": "Sexo",
-    "DOB": "Fecha de nacimiento:"
+    "DOB": "Fecha de nacimiento",
+    "FieldRequired": "Este campo es obligatorio",
+    "PeselTooShort": "Este PESEL es demasiado corto",
+    "PeselTooLong": "Este PESEL es demasiado largo",
+    "OnlyNumbers": "Un pesel solo puede contener números.",
+    "Man": "un hombre",
+    "Woman": "una mujer"
   },
   "frFR": {
-    "Language": "Language",
-    "Check": "Sprawdź",
-    "Sex": "Data urodzenia:",
-    "DOB": "Płeć"
+    "Language": "Langage",
+    "Check": "Inspectión",
+    "Sex": "Séx",
+    "DOB": "Jour d'genesis",
+    "FieldRequired": "",
+    "PeselTooShort": "",
+    "PeselTooLong": "",
+    "OnlyNumbers": "",
+    "Man": "",
+    "Woman": ""
   }
 }

@@ -62,7 +62,7 @@ const Main = () => {
     if (errors.pesel.type === "maxLength")
       return <Wrapper>This PESEL is too long I do declare</Wrapper>;
     if (errors.pesel.type === "pattern")
-      return <Wrapper>This PESEL doesn't match the correct pattern</Wrapper>;
+      return <Wrapper>A pesel can contain only numbers hun</Wrapper>;
   };
 
   return (
