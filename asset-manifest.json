@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/walidator-pesel/static/css/main.28aa1456.css",
+    "main.js": "/walidator-pesel/static/js/main.4a7be21e.js",
+    "index.html": "/walidator-pesel/index.html",
+    "main.28aa1456.css.map": "/walidator-pesel/static/css/main.28aa1456.css.map",
+    "main.4a7be21e.js.map": "/walidator-pesel/static/js/main.4a7be21e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28aa1456.css",
+    "static/js/main.4a7be21e.js"
+  ]
+}
